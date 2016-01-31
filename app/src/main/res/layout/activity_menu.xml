@@ -5,7 +5,7 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:background="#ffffff"
-    tools:context="com.rahul.uberapi.android.demo.Menuapp">
+    tools:context="com.example.aliciabeylan.areyoudrunk.menu">
 
     <Button
         android:id="@+id/btn_balance"

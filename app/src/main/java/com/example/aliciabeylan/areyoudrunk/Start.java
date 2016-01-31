@@ -3,6 +3,8 @@ package com.example.aliciabeylan.areyoudrunk;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.Window;
 
 import java.util.Timer;
 import java.util.TimerTask;
@@ -13,26 +15,35 @@ import java.util.logging.LogRecord;
  */
 public class Start extends Activity {
     @Override
-    protected void onCreate(Bundle savedInstanceState){
-        super.onCreate(savedInstanceState);
-
-        Intent intent = new Intent (this, menu.class);
-        startActivity(intent);
-        finish();
+    public void onBackPressed() {
+        // do nothing.
     }
 
+    private final static String tag = Start.class.getName();
 
 
-//    TimerTask task = new TimerTask(){
-//
-//        public void run(){
-//        Intent mainIntent = new Intent(Start.this, menu.class);
-//        startActivity(mainIntent);
-//        finish();
-//    }
-//    };
-//    Timer timer = new Timer();
-//    timer.schedule(task,3000);
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+//        requestWindowFeature(Window.FEATURE_NO_TITLE);
 
+
+        Log.i(tag, "Splash");
+        setContentView(R.layout.activity_start);
+
+        TimerTask task = new TimerTask() {
+
+            @Override
+            public void run() {
+
+                Intent intent = new Intent(Start.this, menu.class);
+                startActivity(intent);
+                finish();
+            }
+        };
+
+        Timer timer = new Timer();
+        timer.schedule(task, 3000);
+    }
 
 }
